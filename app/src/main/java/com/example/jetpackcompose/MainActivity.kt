@@ -3,7 +3,7 @@ package com.example.jetpackcompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.example.jetpackcompose.ui.navigation.MainNavHost
+import com.example.jetpackcompose.navigation.MainNavHost
 
 class MainActivity : ComponentActivity() {
 
