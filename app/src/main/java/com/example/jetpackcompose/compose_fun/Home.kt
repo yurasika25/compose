@@ -67,7 +67,7 @@ fun HomeFragmentScreen(navController: NavController? = null) {
 
         Button(
             onClick = {
-                navController?.navigate(NavRouts.SecondScreen.route)
+                navController?.navigate(NavRouts.SecondScreen)
             },
             modifier = Modifier
                 .align(Alignment.BottomCenter)

@@ -1,11 +1,9 @@
 package com.example.jetpackcompose.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
 import com.example.jetpackcompose.compose_fun.AffirmationsApp
 import com.example.jetpackcompose.compose_fun.HomeFragmentScreen
 import com.example.jetpackcompose.compose_fun.ThirdFragmentScreen
@@ -17,25 +15,17 @@ fun MainNavHost() {
 
     NavHost(
         navController = navController,
-        startDestination = NavRouts.HomeScreen.route
+        startDestination = NavRouts.HomeScreen
     ) {
-        composable(NavRouts.HomeScreen.route) {
+        composable<NavRouts.HomeScreen> {
             HomeFragmentScreen(navController)
         }
-        composable(NavRouts.SecondScreen.route) {
+        composable<NavRouts.SecondScreen> {
             AffirmationsApp(navController)
         }
-        composable(
-            NavRouts.ThirdScreen.route,
-            arguments = listOf(
-                navArgument("title") { type = NavType.StringType },
-                navArgument("imageResId") { type  = NavType.IntType}
-                )
-        ) { backStackEntry ->
+        composable<NavRouts.ThirdScreen> {
             ThirdFragmentScreen(
-                navController = navController,
-                title = backStackEntry.arguments?.getString("title"),
-                imageResId = backStackEntry.arguments?.getInt("imageResId")
+                navController = navController
             )
         }
     }

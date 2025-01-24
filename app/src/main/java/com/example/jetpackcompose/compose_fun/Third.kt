@@ -35,16 +35,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.jetpackcompose.R
 import com.example.jetpackcompose.support.showToast
+import com.example.jetpackcompose.viewModel.ThirdViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ThirdFragmentScreen(
-    navController: NavController? = null,
-    title: String? = null,
-    imageResId: Int? = R.drawable.image1
+    navController: NavController? = null
 ) {
+    val viewModel = koinViewModel<ThirdViewModel>()
     val context = LocalContext.current
 
     Scaffold(
@@ -89,7 +89,7 @@ fun ThirdFragmentScreen(
                         .padding(8.dp)
                 ) {
                     Image(
-                        painter = painterResource(imageResId!!),
+                        painter = painterResource(viewModel.imageResId.value),
                         contentDescription = null,
                         modifier = Modifier
                             .fillMaxWidth()
@@ -103,7 +103,7 @@ fun ThirdFragmentScreen(
                         .padding(16.dp)
                 ) {
                     Text(
-                        text = title ?: "Empty",
+                        text = viewModel.title.value,
                         fontSize = 24.sp,
                         color = Color.Black,
                         modifier = Modifier.fillMaxWidth(),
@@ -140,5 +140,5 @@ fun ThirdFragmentScreen(
 @Preview
 @Composable
 fun ThirdPreview() {
-    ThirdFragmentScreen(title = "Third Screen", imageResId = R.drawable.image1)
+    ThirdFragmentScreen()
 }

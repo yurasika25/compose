@@ -68,7 +68,7 @@ fun AffirmationList(
                     .padding(8.dp)
                     .clickable {
                         navController?.navigate(
-                            NavRouts.ThirdScreen.createRoute(
+                            NavRouts.ThirdScreen(
                                 navController.context.getString(
                                     affirmation.stringResourceId, affirmation.imageResourceId
                                 ), affirmation.imageResourceId
