@@ -34,16 +34,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.jetpackcompose.ui.NavRouts
-import com.example.jetpackcompose.viewModel.ThirdViewModel
+import com.example.jetpackcompose.navigation.NavRouts
+import com.example.jetpackcompose.viewModel.MainViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun ThirdFragmentScreen(
+fun Details(
     navController: NavController? = null
 ) {
     val context = LocalContext.current
-    val viewModel = koinViewModel<ThirdViewModel>()
+    val viewModel = koinViewModel<MainViewModel>()
 
     var text by remember { mutableStateOf("") }
     val sharedTextState = remember { mutableStateOf("Your Text") }
@@ -55,7 +55,11 @@ fun ThirdFragmentScreen(
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
-            DynamicTopAppBar(title = "Third Screen", navController = navController)
+            DynamicTopAppBar(
+                title = "Affirmation Details",
+                navController = navController,
+                showIcon = true
+            )
         },
         floatingActionButton = {
             FloatingActionButton(
@@ -148,5 +152,5 @@ fun ThirdFragmentScreen(
 @Preview
 @Composable
 fun ThirdPreview() {
-    ThirdFragmentScreen()
+    Details()
 }

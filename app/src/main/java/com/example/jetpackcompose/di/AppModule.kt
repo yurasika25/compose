@@ -1,11 +1,11 @@
 package com.example.jetpackcompose.di
 
-import com.example.jetpackcompose.viewModel.ThirdViewModel
+import com.example.jetpackcompose.viewModel.MainViewModel
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModules = module {
     viewModel {
-        ThirdViewModel(get(), get())
+        MainViewModel(get(), get())
     }
 }

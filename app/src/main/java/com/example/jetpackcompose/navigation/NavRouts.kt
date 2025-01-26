@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui
+package com.example.jetpackcompose.navigation
 
 import kotlinx.serialization.Serializable
 
@@ -9,11 +9,14 @@ sealed class NavRouts {
     data object HomeScreen
 
     @Serializable
-    data object SecondScreen
+    data object AffirmationScreen
 
     @Serializable
-    data class ThirdScreen(val title: String, val imageResId: Int)
+    data class DetailsScreen(val title: String, val imageResId: Int)
 
     @Serializable
     data object MyProfile
+
+    @Serializable
+    data object Notifications
 }

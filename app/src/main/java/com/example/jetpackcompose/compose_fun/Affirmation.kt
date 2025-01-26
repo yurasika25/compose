@@ -23,14 +23,14 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.jetpackcompose.data.Datasource
 import com.example.jetpackcompose.model.Affirmation
-import com.example.jetpackcompose.ui.NavRouts
+import com.example.jetpackcompose.navigation.NavRouts
 
 @Composable
 fun AffirmationsApp(navController: NavController? = null) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
-            DynamicTopAppBar(title = "Affirmations Screen", navController = navController)
+            DynamicTopAppBar(title = "Affirmations", navController = navController)
         },
     ) {
         AffirmationList(
@@ -53,7 +53,7 @@ fun AffirmationList(
                     .padding(8.dp)
                     .clickable {
                         navController?.navigate(
-                            NavRouts.ThirdScreen(
+                            NavRouts.DetailsScreen(
                                 navController.context.getString(
                                     affirmation.title, affirmation.imageResourceId
                                 ), affirmation.imageResourceId

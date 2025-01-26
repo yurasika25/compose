@@ -3,9 +3,9 @@ package com.example.jetpackcompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.example.jetpackcompose.repository.repositoryModule
+import com.example.jetpackcompose.compose_fun.MainHome
 import com.example.jetpackcompose.di.viewModelModules
-import com.example.jetpackcompose.navigation.MainNavHost
+import com.example.jetpackcompose.repository.repositoryModule
 import org.koin.compose.KoinApplication
 
 class MainActivity : ComponentActivity() {
@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
                 modules(viewModelModules)
                 modules(repositoryModule)
             }) {
-                MainNavHost()
+                MainHome()
             }
         }
     }

@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.jetpackcompose.repository.Repository
 import kotlinx.coroutines.flow.MutableStateFlow
 
-class ThirdViewModel(
+class MainViewModel(
     savedStateHandle: SavedStateHandle,
     repository: Repository
 ) : ViewModel() {

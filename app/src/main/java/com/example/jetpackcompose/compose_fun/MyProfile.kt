@@ -37,7 +37,7 @@ import androidx.navigation.NavController
 import com.example.jetpackcompose.R
 import com.example.jetpackcompose.data.ProfileDatasource
 import com.example.jetpackcompose.model.ProfileAffirmation
-import com.example.jetpackcompose.ui.NavRouts
+import com.example.jetpackcompose.navigation.NavRouts
 
 @Composable
 fun MyProfile(navController: NavController? = null) {
@@ -80,7 +80,7 @@ fun ProfileAffirmationList(
                     .padding(vertical = 8.dp)
                     .clickable {
                         navController?.navigate(
-                            NavRouts.ThirdScreen(
+                            NavRouts.DetailsScreen(
                                 navController.context.getString(
                                     affirmation.title, affirmation.imageResourceId
                                 ), affirmation.imageResourceId

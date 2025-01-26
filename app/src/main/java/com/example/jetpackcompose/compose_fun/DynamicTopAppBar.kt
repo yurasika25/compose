@@ -14,15 +14,19 @@ import androidx.navigation.NavController
 @Composable
 fun DynamicTopAppBar(
     title: String,
-    navController: NavController? = null
+    navController: NavController? = null,
+    showIcon: Boolean = false
 ) {
-    TopAppBar(title = {
-        Text(text = title)
-    }, navigationIcon = {
-        IconButton(onClick = {
-            navController?.popBackStack()
-        }) {
-            Icon(Icons.Filled.ArrowBack, contentDescription = null)
+    TopAppBar(
+        title = { Text(text = title) },
+        navigationIcon = {
+            if (showIcon) {
+                IconButton(onClick = {
+                    navController?.popBackStack()
+                }) {
+                    Icon(Icons.Filled.ArrowBack, contentDescription = null)
+                }
+            }
         }
-    })
+    )
 }

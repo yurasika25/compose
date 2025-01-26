@@ -61,6 +61,7 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.8.5")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation ("androidx.compose.material:material:1.7.6")  // Use the latest Compose version
     implementation("androidx.compose.material3:material3")
     implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
     implementation ("io.insert-koin:koin-androidx-compose:4.0.2")
@@ -73,4 +74,5 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation ("androidx.fragment:fragment-ktx:1.8.5")
+    implementation ("androidx.compose.foundation:foundation:1.7.6")
 }
