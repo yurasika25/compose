@@ -13,4 +13,7 @@ sealed class NavRouts {
 
     @Serializable
     data class ThirdScreen(val title: String, val imageResId: Int)
+
+    @Serializable
+    data object MyProfile
 }

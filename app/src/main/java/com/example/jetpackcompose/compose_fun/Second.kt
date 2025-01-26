@@ -9,16 +9,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Card
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -31,22 +25,13 @@ import com.example.jetpackcompose.data.Datasource
 import com.example.jetpackcompose.model.Affirmation
 import com.example.jetpackcompose.ui.NavRouts
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AffirmationsApp(navController: NavController? = null) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
-            TopAppBar(title = {
-                Text(text = "Affirmations Screen")
-            }, navigationIcon = {
-                IconButton(onClick = {
-                    navController?.popBackStack()
-                }) {
-                    Icon(Icons.Filled.ArrowBack, contentDescription = null)
-                }
-            })
-        }
+            DynamicTopAppBar(title = "Affirmations Screen", navController = navController)
+        },
     ) {
         AffirmationList(
             affirmationList = Datasource().loadAffirmations(), Modifier.padding(it), navController
@@ -70,7 +55,7 @@ fun AffirmationList(
                         navController?.navigate(
                             NavRouts.ThirdScreen(
                                 navController.context.getString(
-                                    affirmation.stringResourceId, affirmation.imageResourceId
+                                    affirmation.title, affirmation.imageResourceId
                                 ), affirmation.imageResourceId
                             )
                         )
@@ -93,7 +78,7 @@ fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
                 contentScale = ContentScale.Crop
             )
             Text(
-                text = LocalContext.current.getString(affirmation.stringResourceId),
+                text = LocalContext.current.getString(affirmation.title),
                 modifier = Modifier.padding(16.dp),
                 style = MaterialTheme.typography.headlineSmall
             )

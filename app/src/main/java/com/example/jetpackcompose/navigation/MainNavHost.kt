@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.jetpackcompose.compose_fun.AffirmationsApp
 import com.example.jetpackcompose.compose_fun.HomeFragmentScreen
+import com.example.jetpackcompose.compose_fun.MyProfile
 import com.example.jetpackcompose.compose_fun.ThirdFragmentScreen
 import com.example.jetpackcompose.ui.NavRouts
 
@@ -27,6 +28,9 @@ fun MainNavHost() {
             ThirdFragmentScreen(
                 navController = navController
             )
+        }
+        composable<NavRouts.MyProfile> {
+            MyProfile(navController)
         }
     }
 }

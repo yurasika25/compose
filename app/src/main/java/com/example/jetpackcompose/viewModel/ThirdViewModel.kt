@@ -16,6 +16,6 @@ class ThirdViewModel(
     init {
         title.value = savedStateHandle.get<String>("title") ?: ""
         imageResId.value = savedStateHandle.get<Int>("imageResId") ?: -1
-        title.value = repository.getData()
+//        title.value = repository.getData()
     }
 }
