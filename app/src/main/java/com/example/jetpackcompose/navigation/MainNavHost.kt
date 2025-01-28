@@ -5,9 +5,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.jetpackcompose.compose_fun.AffirmationsApp
-import com.example.jetpackcompose.compose_fun.HomeFragmentScreen
+import com.example.jetpackcompose.compose_fun.AffirmationDetailsScreen
+import com.example.jetpackcompose.compose_fun.HomeScreen
+import com.example.jetpackcompose.compose_fun.MainGameScreen
 import com.example.jetpackcompose.compose_fun.MyProfile
-import com.example.jetpackcompose.compose_fun.Details
 import com.example.jetpackcompose.compose_fun.Notifications
 
 
@@ -18,7 +19,7 @@ fun MainNavHost(navController: NavHostController) {
         startDestination = NavRouts.HomeScreen
     ) {
         composable<NavRouts.HomeScreen> {
-            HomeFragmentScreen(navController)
+            HomeScreen(navController)
         }
         composable<NavRouts.AffirmationScreen> {
             AffirmationsApp(navController)
@@ -30,7 +31,10 @@ fun MainNavHost(navController: NavHostController) {
             Notifications(navController)
         }
         composable<NavRouts.DetailsScreen> {
-            Details(navController)
+            AffirmationDetailsScreen(navController)
+        }
+        composable<NavRouts.Game> {
+            MainGameScreen(navController)
         }
     }
 }

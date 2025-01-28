@@ -19,4 +19,7 @@ sealed class NavRouts {
 
     @Serializable
     data object Notifications
+
+    @Serializable
+    data class Game(val name: String? = null)
 }

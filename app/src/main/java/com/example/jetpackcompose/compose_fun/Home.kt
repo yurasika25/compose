@@ -1,9 +1,10 @@
 package com.example.jetpackcompose.compose_fun
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -12,7 +13,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -24,9 +24,7 @@ import androidx.navigation.NavController
 import com.example.jetpackcompose.R
 
 @Composable
-fun HomeFragmentScreen(navController: NavController? = null) {
-
-
+fun HomeScreen(navController: NavController? = null) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
@@ -37,11 +35,36 @@ fun HomeFragmentScreen(navController: NavController? = null) {
             )
         },
     ) { paddingValues ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
+        Column(
+            Modifier
                 .padding(paddingValues)
-                .padding(16.dp)
+                .fillMaxHeight()
+                .fillMaxWidth()) {
+            Text(
+                modifier = Modifier.fillMaxWidth(),
+                text = "This is the home screen",
+                fontSize = 24.sp,
+                color = Color.Black,
+                textAlign = TextAlign.Center
+            )
+
+            Spacer(modifier = Modifier.width(16.dp))
+
+            Text(
+                text = "Open the next screen or close the app",
+                fontSize = 14.sp,
+                color = Color.Gray,
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center
+            )
+        }
+
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Center
         ) {
 
             Image(
@@ -51,31 +74,7 @@ fun HomeFragmentScreen(navController: NavController? = null) {
                     .fillMaxWidth()
                     .height(200.dp)
                     .padding(top = 20.dp)
-                    .align(Alignment.TopCenter)
             )
-            Column(
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .padding(16.dp)
-            ) {
-                Text(
-                    text = "This is the home screen",
-                    fontSize = 24.sp,
-                    color = Color.Black,
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.Center
-                )
-
-                Spacer(modifier = Modifier.width(16.dp))
-
-                Text(
-                    text = "Open the next screen or close the app",
-                    fontSize = 14.sp,
-                    color = Color.Gray,
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.Center
-                )
-            }
         }
     }
 }
@@ -83,5 +82,5 @@ fun HomeFragmentScreen(navController: NavController? = null) {
 @Preview
 @Composable
 fun HomePreview() {
-    HomeFragmentScreen()
+    HomeScreen()
 }
