@@ -4,13 +4,12 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.jetpackcompose.compose_fun.AffirmationsApp
 import com.example.jetpackcompose.compose_fun.AffirmationDetailsScreen
+import com.example.jetpackcompose.compose_fun.AffirmationsApp
 import com.example.jetpackcompose.compose_fun.HomeScreen
 import com.example.jetpackcompose.compose_fun.MainGameScreen
-import com.example.jetpackcompose.compose_fun.MyProfile
+import com.example.jetpackcompose.compose_fun.MyProfileScreen
 import com.example.jetpackcompose.compose_fun.Notifications
-
 
 @Composable
 fun MainNavHost(navController: NavHostController) {
@@ -25,7 +24,7 @@ fun MainNavHost(navController: NavHostController) {
             AffirmationsApp(navController)
         }
         composable<NavRouts.MyProfile> {
-            MyProfile(navController)
+            MyProfileScreen(navController)
         }
         composable<NavRouts.Notifications> {
             Notifications(navController)
@@ -33,7 +32,7 @@ fun MainNavHost(navController: NavHostController) {
         composable<NavRouts.DetailsScreen> {
             AffirmationDetailsScreen(navController)
         }
-        composable<NavRouts.Game> {
+        composable<NavRouts.Game>() {
             MainGameScreen(navController)
         }
     }

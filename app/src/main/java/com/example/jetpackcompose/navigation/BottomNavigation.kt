@@ -12,7 +12,7 @@ import androidx.navigation.NavHostController
 import com.example.jetpackcompose.R
 
 @Composable
-fun <T : Any> RowScope.nav(
+fun <T : Any> RowScope.navigationItem(
     navController: NavHostController,
     iconRes: Int,
     itemSelected: Int = 0,
@@ -43,7 +43,11 @@ fun <T : Any> RowScope.nav(
         },
         selected = selectedItem == itemSelected,
         onClick = {
-            navController.navigate(routs)
+            navController.apply {
+                popBackStack(routs, true)
+                navigate(routs)
+            }
+
             updateSelectedItem(itemSelected)
         }
     )

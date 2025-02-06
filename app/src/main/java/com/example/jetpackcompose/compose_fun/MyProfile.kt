@@ -21,6 +21,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,9 +40,28 @@ import com.example.jetpackcompose.R
 import com.example.jetpackcompose.data.ProfileDatasource
 import com.example.jetpackcompose.model.ProfileAffirmation
 import com.example.jetpackcompose.navigation.NavRouts
+import com.example.jetpackcompose.viewModel.MyProfileViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun MyProfile(navController: NavController? = null) {
+fun MyProfileScreen(navController: NavController? = null) {
+    val viewModel = koinViewModel<MyProfileViewModel>()
+    val titleBtn by viewModel.affirmationData.collectAsState()
+
+    MyProfile(
+        navController = navController,
+        titleBtn = titleBtn,
+        onFollowClicked = { viewModel.onFollowClicked() }
+    )
+}
+
+@Composable
+fun MyProfile(
+    navController: NavController? = null,
+    titleBtn: String?,
+    onFollowClicked: () -> Unit
+
+) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
@@ -56,11 +77,16 @@ fun MyProfile(navController: NavController? = null) {
         ) {
             ProfileHeader()
             Spacer(modifier = Modifier.height(16.dp))
-            ProfileStats()
+            ProfileStats(titleBtn)
             Spacer(modifier = Modifier.height(16.dp))
-            FollowButton()
+            FollowButton(
+                updatedText = titleBtn,
+                onFollowClicked = onFollowClicked
+            )
             ProfileAffirmationList(
-                affirmationList = ProfileDatasource().loadProfileAffirmations(), Modifier.padding(top = 16.dp), navController
+                affirmationList = { ProfileDatasource().loadProfileAffirmations() },
+                Modifier.padding(top = 16.dp),
+                navController
             )
         }
     }
@@ -68,12 +94,12 @@ fun MyProfile(navController: NavController? = null) {
 
 @Composable
 fun ProfileAffirmationList(
-    affirmationList: List<ProfileAffirmation>,
+    affirmationList: () -> List<ProfileAffirmation>,
     modifier: Modifier = Modifier,
     navController: NavController?
 ) {
     LazyColumn(modifier = modifier) {
-        items(affirmationList) { affirmation ->
+        items(affirmationList()) { affirmation ->
             MyProfileCard(
                 affirmation = affirmation,
                 modifier = Modifier
@@ -123,18 +149,23 @@ fun MyProfileCard(affirmation: ProfileAffirmation, modifier: Modifier = Modifier
 }
 
 @Composable
-fun FollowButton() {
+fun FollowButton(
+    updatedText: String?,
+    onFollowClicked: () -> Unit
+) {
     Button(
-        onClick = { },
+        onClick = {
+            onFollowClicked()
+        },
         modifier = Modifier
             .fillMaxWidth(0.5f)
             .height(48.dp)
     ) {
         Text(
-            text = "Follow",
+            text = updatedText ?: "Follow",
             color = Color.White,
             fontSize = 16.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
         )
     }
 }
@@ -171,7 +202,9 @@ fun ProfileHeader() {
 }
 
 @Composable
-fun ProfileStats() {
+fun ProfileStats(
+    updatedText: String?
+) {
     Row(
         horizontalArrangement = Arrangement.SpaceEvenly,
         modifier = Modifier
@@ -181,7 +214,7 @@ fun ProfileStats() {
         StatItem("Posts", "150")
         StatItem("Followers", "2.5K")
         StatItem("Following", "300")
-        StatItem("Likes", "4k")
+        StatItem("Likes", updatedText ?: "Empty")
     }
 }
 
@@ -204,7 +237,7 @@ fun StatItem(label: String, value: String) {
 }
 
 @Composable
-@Preview
+@Preview(showBackground = true)
 fun MyProfilePreview() {
-    MyProfile()
+    MyProfile(navController = null, "My Profile", {})
 }

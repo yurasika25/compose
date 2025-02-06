@@ -42,5 +42,5 @@ class AffirmationDetailsViewModel(
     }
 }
 
-data class AffirmationData(var title: String, var imageResId: Int)
+data class AffirmationData(val title: String, val imageResId: Int)
 data class Game(val id: Int? = null, val name: String? = null, val imageResId: Int? = null)

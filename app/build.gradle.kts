@@ -76,6 +76,12 @@ dependencies {
     implementation ("androidx.fragment:fragment-ktx:1.8.5")
     implementation ("androidx.compose.foundation:foundation:1.7.6")
 
+    implementation ("com.google.accompanist:accompanist-pager:0.36.0")
+    implementation ("com.google.accompanist:accompanist-pager-indicators:0.36.0")
+
+    implementation ("androidx.compose.animation:animation:1.7.7")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.30.1")
+
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.7.2")

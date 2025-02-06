@@ -1,13 +1,10 @@
 package com.example.jetpackcompose.compose_fun
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Scaffold
@@ -15,16 +12,23 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.jetpackcompose.R
+import com.example.jetpackcompose.data.Datasource
 
 @Composable
-fun HomeScreen(navController: NavController? = null) {
+fun Home(navController: NavController? = null) {
+    HomeScreen(navController)
+}
+
+@Composable
+fun HomeScreen(
+    navController: NavController? = null
+) {
+    val affirmations = Datasource().loadAffirmations()
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
@@ -39,7 +43,8 @@ fun HomeScreen(navController: NavController? = null) {
             Modifier
                 .padding(paddingValues)
                 .fillMaxHeight()
-                .fillMaxWidth()) {
+                .fillMaxWidth()
+        ) {
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = "This is the home screen",
@@ -57,24 +62,7 @@ fun HomeScreen(navController: NavController? = null) {
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center
             )
-        }
-
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.Center
-        ) {
-
-            Image(
-                painter = painterResource(id = R.drawable.ic_letter),
-                contentDescription = null,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp)
-                    .padding(top = 20.dp)
-            )
+            PhotoListViewPagerAffirmation(affirmations)
         }
     }
 }
@@ -82,5 +70,5 @@ fun HomeScreen(navController: NavController? = null) {
 @Preview
 @Composable
 fun HomePreview() {
-    HomeScreen()
+    Home(null)
 }

@@ -40,7 +40,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.jetpackcompose.R
-import com.example.jetpackcompose.navigation.NavRouts
 import com.example.jetpackcompose.viewModel.AffirmationData
 import com.example.jetpackcompose.viewModel.AffirmationDetailsViewModel
 import com.example.jetpackcompose.viewModel.Game
@@ -93,7 +92,7 @@ fun AffirmationDetails(
             }
         },
         floatingActionButtonPosition = FabPosition.End
-    ) {
+    ) { it ->
         Modifier.padding(it)
         Box(
             modifier = Modifier
@@ -101,47 +100,7 @@ fun AffirmationDetails(
                 .padding(16.dp)
         ) {
 
-            LazyColumn(modifier = Modifier
-                .fillMaxSize()
-                .padding(top = 46.dp)) {
-                items(gameList) { game ->
-                    Card(
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .fillMaxWidth()
-                            .height(40.dp)
-                            .clickable {
-                                navController?.navigate(NavRouts.Game(game.name))
-                            }
-                    ) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Card(
-                                modifier = Modifier
-                                    .width(80.dp)
-                                    .height(40.dp)
-                                    .padding(8.dp)
-                            ) {
-                                Image(
-                                    painter = painterResource(game.imageResId ?: R.drawable.image1),
-                                    contentDescription = null,
-                                    modifier = Modifier
-                                        .fillMaxWidth(),
-                                    contentScale = ContentScale.Crop
-                                )
-                            }
-                            game.name?.let { it1 ->
-                                Text(
-                                    text = it1,
-                                    fontSize = 18.sp,
-                                    color = Color.Black
-                                )
-                            }
-                        }
-                    }
-                }
-            }
+            GamesList(gameList, navController)
             Column(
                 modifier = Modifier
                     .padding(8.dp)
