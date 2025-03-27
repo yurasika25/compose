@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "696107699990",
+    "project_id": "affirmation-app-7120b",
+    "storage_bucket": "affirmation-app-7120b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696107699990:android:5dc3cb068bfd4c6eb1ca37",
+        "android_client_info": {
+          "package_name": "com.affirmation.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBX3djBNog_0Xv9bEkgI47MM-bIZUlYMNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

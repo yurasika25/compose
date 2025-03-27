@@ -22,4 +22,15 @@
     <string name="subtitle9">Patience unveils life’s beauty.</string>
     <string name="subtitle10">Today is my chance to thrive.</string>
 
+    <string name="peaceful">Peaceful</string>
+    <string name="positivity">Positivity</string>
+    <string name="mindful">Mindful</string>
+    <string name="resilient">Resilient</string>
+    <string name="abundant">Abundant</string>
+    <string name="joyful">Joyful</string>
+    <string name="grateful">Grateful</string>
+    <string name="fearless">Fearless</string>
+    <string name="balanced">Balanced</string>
+    <string name="spiritual">Spiritual</string>
+
 </resources>
